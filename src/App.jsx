@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     // Fetch CSV Data
-    Papa.parse('/data.csv', {
+    Papa.parse('./data.csv', {
       download: true,
       header: true,
       skipEmptyLines: true,
@@ -53,7 +53,7 @@ function App() {
     });
 
     // Fetch Jobs Data
-    fetch('/jobs.json')
+    fetch('./jobs.json')
       .then(res => res.json())
       .then(data => setJobsData(data))
       .catch(err => console.error("Error loading jobs.json:", err));
