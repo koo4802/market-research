@@ -39,4 +39,5 @@ jobs:
           git add public/jobs.json
           # Commit only if there are changes
           git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update jobs.json"
+          git pull --rebase origin main
           git push
