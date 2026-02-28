@@ -52,11 +52,14 @@ function App() {
       }
     });
 
-    // Fetch Jobs Data
-    fetch('./jobs.json')
+    // Fetch Jobs Data with cache busting
+    fetch(`./jobs.json?t=${new Date().getTime()}`)
       .then(res => res.json())
       .then(data => setJobsData(data))
-      .catch(err => console.error("Error loading jobs.json:", err));
+      .catch(err => {
+        console.error("Error loading jobs.json:", err);
+        setJobsData({}); // fallback to prevent infinite loading state
+      });
   }, []);
 
   // Compute stats
