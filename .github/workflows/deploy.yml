@@ -6,6 +6,11 @@ on:
     branches: [ main, master ]
   # 수동으로 배포할 수 있는 옵션
   workflow_dispatch:
+  # 크롤링 봇이 성공적으로 끝났을 때 자동으로 배포 실행
+  workflow_run:
+    workflows: ["Daily Job Scraping"]
+    types:
+      - completed
 
 permissions:
   contents: read
